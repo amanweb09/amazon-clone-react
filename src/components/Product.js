@@ -16,7 +16,7 @@ const Product = ({ id, title, image, price, rating }) => {
             <div className="product-rating flex">
                 {
                     ratingArray.map((_, i) => {
-                        return <i style={{ color: 'gold' }} className="fas fa-star"></i>
+                        return <i key={Math.round(Math.random() * 1E9)} style={{ color: 'gold' }} className="fas fa-star"></i>
                     })
                 }
 
