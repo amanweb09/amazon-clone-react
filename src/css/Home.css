@@ -8,6 +8,7 @@
 .home_row {
     z-index: 1;
     margin: 0 5px;
+    font-weight: 600;
 }
 .home_image {
     width: 100%;

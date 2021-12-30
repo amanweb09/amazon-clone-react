@@ -45,6 +45,10 @@
     flex-direction: column;
     margin: 0 10px;
 }
+a {
+    color: #fff;
+    text-decoration: none;
+}
 .header_option_basket{
     color: #fff;
     font-size: 1.25rem;

@@ -1,0 +1,22 @@
+.checkout {
+    max-width: 100vw;
+    overflow: hidden;
+    padding: 1.2rem;
+    background: #fff;
+    height: max-content;
+}
+.checkout_left {
+    flex: 6;
+}
+.checkout_ad {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.checkout_title {
+    margin-right: 2rem;
+    padding: 2rem;
+    border-bottom: 1px solid #dcdcdc;
+}
+.checkout_right {
+    flex: 2;
+}

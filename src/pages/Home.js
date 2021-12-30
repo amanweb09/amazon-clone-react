@@ -15,7 +15,7 @@ const Home = () => {
                 <div className="home_row flex">
                     <Product
                         id="clone-pr-1"
-                        title='The Lean Startup'
+                        title="The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses"
                         price={250}
                         image='/images/book-1.png'
                         rating={3}
@@ -23,7 +23,7 @@ const Home = () => {
 
                     <Product
                         id="clone-pr-2"
-                        title='Macbook Pro 14-inches 512gb SSD'
+                        title='2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD Storage) - Space Gray'
                         price={175900}
                         image='/images/laptop-1.png'
                         rating={5}
@@ -40,14 +40,14 @@ const Home = () => {
                     />
                     <Product
                         id="clone-pr-4"
-                        title='Mi Band 5'
+                        title='Xiaomi Mi Band 6 Activity Tracker Smart Band'
                         price={2450}
                         image='/images/fitness-band.png'
                         rating={4}
                     />
                     <Product
                         id="clone-pr-5"
-                        title='Nikon DSLR Single Lens Camera'
+                        title='Nikon D7500 20.9MP DSLR Camera with AF-S DX NIKKOR 18-140mm f/3.5-5.6G ED VR Lens, Black'
                         price={35975}
                         image='/images/camera.png'
                         rating={4}
@@ -58,8 +58,8 @@ const Home = () => {
                 <div className="home_row flex">
                     <Product
                         id="clone-pr-6"
-                        title='Firefox 19-inches 24-gear Bicycle (dual-shock suspensions)'
-                        price={25450}
+                        title='Hiland Road Bike Aluminum Frame 700c Racing Bike with 14 Speeds Drivetrain'
+                        price={45450}
                         image='/images/bicycle.png'
                         rating={3}
                     />

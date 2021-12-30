@@ -1,11 +1,14 @@
 import React from 'react';
 import '../css/Header.css';
+import { NavLink } from 'react-router-dom';
 
 
 const Header = () => {
     return (
         <div className='header'>
-            <img className='header_logo' src="/images/logo.png" alt="" />
+            <NavLink to='/'>
+                <img className='header_logo' src="/images/logo.png" alt="" />
+            </NavLink>
 
             <div className="header_search flex">
                 <input type="text" name="search" id="search" />
@@ -43,8 +46,10 @@ const Header = () => {
                 </div>
 
                 <div className="flex-center header_option_basket">
-                    <i className="fas fa-shopping-bag"></i>
-                    <span className='header_option_line_two header_basket_count'>0</span>
+                    <NavLink to="/checkout">
+                        <i className="fas fa-shopping-bag"></i>
+                        <span className='header_option_line_two header_basket_count'>0</span>
+                    </NavLink>
                 </div>
             </div>
         </div>
