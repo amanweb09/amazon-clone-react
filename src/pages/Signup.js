@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 import '../css/Signup.css';
 
 const Signup = () => {
+    const [countryCodes, setCountryCodes] = useState([]);
+
+    useEffect(() => {
+
+        axios.get("https://www.universal-tutorial.com/api/countries/", {
+            headers: {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhbWFua2hhbm5hMjI0NDY2QGdtYWlsLmNvbSIsImFwaV90b2tlbiI6IlcwczZwX0dzYmRjNF9yUGhwamdoRVp1TGNKX0kyZW1RVk53a3RBcmdwTDJ0QXA5VEVPMXZqZVZqbi0yNzduSVprTWsifSwiZXhwIjoxNjQwOTU5ODk1fQ.D6jhzR7chgHgTbQVvZ1r4445ERtNNoGxgdXjCBdGwwk",
+                "Accept": "application/json"
+            }
+        })
+            .then((resp) => {
+                setCountryCodes(resp.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
+
     return (
         <div className='signup'>
             <div className="signup_logo flex">
+
                 <img
                     src="https://www.peninsulafamilyservice.org/wp-content/uploads/2019/08/amazon-logo-transparent.png"
                     alt="amazon salary png logo vector"
@@ -20,12 +40,12 @@ const Signup = () => {
 
                 <label htmlFor="tel">Mobile number</label>
                 <div className="signup_tel flex-center">
-                    <select name="country-code" id="">
-                        <option value="in">IN +91</option>
-                        <option value="in">IN +91</option>
-                        <option value="in">IN +91</option>
-                        <option value="in">IN +91</option>
-                        <option value="in">IN +91</option>
+                    <select name="signup_country_code" id="">
+                        {
+                            countryCodes.map((code) => {
+                                return <option value={code.country_phone_code}>{code.country_short_name} {code.country_phone_code}</option>
+                            })
+                        }
                     </select>
                     <input type="tel" name="tel" id="" />
                 </div>
@@ -36,9 +56,9 @@ const Signup = () => {
                 <label htmlFor="password">Password</label>
                 <input type="password" name='password' placeholder='At least 6 characters' />
 
-                <span className='flex signup_password_notice'><i class="fas fa-info"></i> Passwords must be at least 6 characters.</span>
+                <span className='flex signup_password_notice'><i className="fas fa-info"></i> Passwords must be at least 6 characters.</span>
 
-                <p className='signup_verify'>We will send you a text to verify your phone. <br/> Message and Data rates may apply.</p>
+                <p className='signup_verify'>We will send you a text to verify your phone. <br /> Message and Data rates may apply.</p>
 
                 <button>Continue</button>
 
