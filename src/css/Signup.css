@@ -8,6 +8,7 @@
     margin: 1rem auto;
     width: 9rem;
     height: 2rem;
+    cursor: pointer;
 }
 .signup_logo span{
     padding-left: 0.2rem;

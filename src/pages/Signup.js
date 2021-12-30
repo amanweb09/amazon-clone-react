@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../css/Signup.css';
 
 const Signup = () => {
     const [countryCodes, setCountryCodes] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -22,11 +23,16 @@ const Signup = () => {
             })
     }, [])
 
+    const redirectToHome = () => {
+        navigate('/')
+    }
+
     return (
         <div className='signup'>
             <div className="signup_logo flex">
 
                 <img
+                    onClick={() => { redirectToHome() }}
                     src="https://www.peninsulafamilyservice.org/wp-content/uploads/2019/08/amazon-logo-transparent.png"
                     alt="amazon salary png logo vector"
                 />
