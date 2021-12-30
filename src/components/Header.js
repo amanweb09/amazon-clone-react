@@ -18,14 +18,16 @@ const Header = () => {
             </div>
 
             <div className="header_nav flex">
-                <div className="header_option">
-                    <span className="header_option_line_one">
-                        Hello Guest
-                    </span>
-                    <span className="header_option_line_two">
-                        Signin
-                    </span>
-                </div>
+                <NavLink to='/signup'>
+                    <div className="header_option">
+                        <span className="header_option_line_one">
+                            Hello Guest
+                        </span>
+                        <span className="header_option_line_two">
+                            Signin
+                        </span>
+                    </div>
+                </NavLink>
 
                 <div className="header_option">
                     <span className="header_option_line_one">

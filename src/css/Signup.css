@@ -1,0 +1,95 @@
+.signup {
+    max-width: 100vw;
+    overflow: hidden;
+    height: 100vh;
+    background: #fff;
+}
+.signup_logo {
+    margin: 1rem auto;
+    width: 9rem;
+    height: 2rem;
+}
+.signup_logo span{
+    padding-left: 0.2rem;
+    padding-top: 0.2rem;
+    font-size: 0.85rem;
+}
+.signup form {
+    width: 23%;
+    height: 82vh;
+    border: 1px solid #dcdcdc;
+    display: block;
+    margin: auto;
+    padding: 0.65rem 1.1rem;
+}
+span.signup_form_heading {
+    font-size: 1.7rem;
+    display: block;
+    color: #111;
+    margin: 0.75rem 0;
+    margin-bottom: 1.15rem;
+}
+.signup form label {
+    display: block;
+    font-weight: 800;
+    font-size: 0.80rem;
+    color: #454545;
+    padding: 0.5rem 0;
+}
+.signup form > input {
+    width: 95%;
+    height: 1.60rem;
+    margin-bottom: 0.65rem;
+}
+.signup form > input:focus {
+    border: 2px solid #f0c14b;
+}
+div.signup_tel {
+    justify-content: space-between;
+    width: 95%;
+    padding-bottom: 0.7rem;
+}
+div.signup_tel select {
+    height: 2rem;
+    padding: 0.25rem;
+    background: #ececec;
+}
+div.signup_tel > input {
+    flex: 1;
+    height: 1.70rem;
+    margin-left: 0.65rem;
+}
+span.signup_password_notice {
+    font-size: 0.8rem;
+    color: #454545;
+}
+span.signup_password_notice i {
+    color: rgb(94, 192, 231);
+    padding: 0 0.7rem 0 0.3rem;
+}
+p.signup_verify {
+    font-size: 0.75rem;
+    color: #2a2a2a;
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+button {
+    width: 98%;
+    margin: 0.6rem auto;
+    display: block;
+    height: 2rem;
+    background: linear-gradient(to bottom, #f8e5b3, #f0c14b);
+    border: 1px solid #454545;
+}
+hr {
+    margin: 1rem 0;
+}
+.signup_links {
+    font-size: 0.8rem;
+    float: left;
+    margin: 0.25rem;
+}
+.signup_links a {
+    color: rgb(47, 111, 185);
+    font-weight: 500;
+}
