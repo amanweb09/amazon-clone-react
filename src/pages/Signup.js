@@ -5,6 +5,14 @@ import '../css/Signup.css';
 
 const Signup = () => {
     const [countryCodes, setCountryCodes] = useState([]);
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [tel, setTel] = useState('');
+    const [cc, setCc] = useState('');
+    const [password, setPassword] = useState('');
+
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,8 +31,13 @@ const Signup = () => {
             })
     }, [])
 
-    const redirectToHome = () => {
-        navigate('/')
+    const createAuthObject = (e) => {
+        e.preventDefault();
+
+        const authObject = {
+            name, cc, tel, email, password
+        }
+        console.log(authObject);
     }
 
     return (
@@ -32,7 +45,7 @@ const Signup = () => {
             <div className="signup_logo flex">
 
                 <img
-                    onClick={() => { redirectToHome() }}
+                    onClick={() => navigate('/')}
                     src="https://www.peninsulafamilyservice.org/wp-content/uploads/2019/08/amazon-logo-transparent.png"
                     alt="amazon salary png logo vector"
                 />
@@ -42,31 +55,31 @@ const Signup = () => {
             <form action="#" method='POST'>
                 <span className='signup_form_heading'>Create Account</span>
                 <label htmlFor="name">Your name</label>
-                <input type="text" name='name' />
+                <input defaultChecked={true} value={name} type="text" name='name' onChange={(e) => { setName(e.target.value) }} />
 
                 <label htmlFor="tel">Mobile number</label>
                 <div className="signup_tel flex-center">
-                    <select name="signup_country_code" id="">
+                    <select value={cc} name="signup_country_code" id="" onChange={(e) => { setCc(e.target.value) }}>
                         {
                             countryCodes.map((code) => {
                                 return <option value={code.country_phone_code}>{code.country_short_name} {code.country_phone_code}</option>
                             })
                         }
                     </select>
-                    <input type="tel" name="tel" id="" />
+                    <input value={tel} type="tel" name="tel" id="" onChange={(e) => { setTel(e.target.value) }} />
                 </div>
 
                 <label htmlFor="email">Email (optional)</label>
-                <input type="email" name='email' />
+                <input value={email} type="email" name='email' onChange={(e) => { setEmail(e.target.value) }} />
 
                 <label htmlFor="password">Password</label>
-                <input type="password" name='password' placeholder='At least 6 characters' />
+                <input value={password} type="password" name='password' onChange={(e) => { setPassword(e.target.value) }} placeholder='At least 6 characters' />
 
                 <span className='flex signup_password_notice'><i className="fas fa-info"></i> Passwords must be at least 6 characters.</span>
 
                 <p className='signup_verify'>We will send you a text to verify your phone. <br /> Message and Data rates may apply.</p>
 
-                <button>Continue</button>
+                <button onClick={(e) => { createAuthObject(e) }}>Continue</button>
 
                 <hr />
 
