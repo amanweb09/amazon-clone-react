@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../css/Signup.css';
-import Message from '../components/Message';
+import ErrMessage from '../components/ErrMessage';
+import SuccessMessage from '../components/SuccessMessage';
 
 const Signup = () => {
     const [countryCodes, setCountryCodes] = useState([]);
@@ -45,24 +46,40 @@ const Signup = () => {
 
         axios.post('/signup', { authObject: JSON.stringify(authObject) })
             .then((res) => {
-                console.log(res);
+                if (res.status === 201) {
+                    setIsFail(false);
+                    setIsSuccessful(true);
 
-                if (res.status === 200) {
-                    setIsSuccessful(true)
-                    setRespText(res.data.success)
+                    setTimeout(() => {
+                        navigate('/')
+                    }, 1500)
                 }
             })
             .catch((err) => {
-                console.log(err);
-                setIsFail(true)
-                setRespText('There was a problem')
+                setIsSuccessful(false);
+                setIsFail(true);
+
+                const status = err.response.status;
+
+                switch (status) {
+                    case 422:
+                        setRespText('Please fill all the fields')
+                        break;
+                    case 500:
+                        setRespText('Internal Server Error')
+                        break;
+                    case 403:
+                        setRespText('User already exists with this email/telephone')
+                    default:
+                        break;
+                }
             })
     }
 
     return (
         <div className='signup'>
             <div className="signup_logo flex">
-                
+
                 <img
                     onClick={() => navigate('/')}
                     src="https://www.peninsulafamilyservice.org/wp-content/uploads/2019/08/amazon-logo-transparent.png"
@@ -71,9 +88,11 @@ const Signup = () => {
                 <span>.in</span>
             </div>
             {
-                
+                isSuccessful ? <SuccessMessage /> : ""
             }
-                <Message />
+            {
+                isFail ? <ErrMessage message={respText} /> : ""
+            }
 
             <form action="#" method='POST'>
                 <span className='signup_form_heading'>Create Account</span>

@@ -3,6 +3,7 @@
     height: 5rem;
     margin: 1rem auto;
     padding: 0.5rem;
+    border: 2px solid red
 }
 div.message_icon {
     height: 5rem;
@@ -19,5 +20,30 @@ div.message_icon i {
 .message_text p {
     font-size: 0.85rem;
     padding: 0.25rem;
+    line-height: 1.5;
+}
+
+.success_message {
+    width: 24%;
+    height: 5rem;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border: 2px solid rgb(12, 211, 12);
+}
+div.success_message_icon {
+    height: 5rem;
+    padding: 0 0.5rem
+}
+.success_message_icon i{
+    margin-top: 1.25rem;
+    font-size: 1.25rem;
+    color: rgb(12, 211, 12);
+}
+.success_message_text {
+    padding: 0.4rem 1rem;
+}
+.success_message_text p {
+    font-size: 0.85rem;
+    padding: 0.1rem 0;
     line-height: 1.5;
 }
