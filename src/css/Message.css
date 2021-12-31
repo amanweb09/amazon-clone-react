@@ -1,0 +1,23 @@
+.message {
+    width: 24%;
+    height: 5rem;
+    margin: 1rem auto;
+    padding: 0.5rem;
+}
+div.message_icon {
+    height: 5rem;
+    padding: 0 0.5rem
+}
+div.message_icon i {
+    margin-top: 1.25rem;
+    font-size: 1.1rem;
+    color: red;
+}
+.message_text {
+    padding: 0.4rem 1rem;
+}
+.message_text p {
+    font-size: 0.85rem;
+    padding: 0.25rem;
+    line-height: 1.5;
+}
