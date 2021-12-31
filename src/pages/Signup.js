@@ -37,7 +37,10 @@ const Signup = () => {
         const authObject = {
             name, cc, tel, email, password
         }
-        console.log(authObject);
+
+        axios.post('/signup', { authObject: JSON.stringify(authObject) })
+            .then((res) => { console.log(res); })
+            .catch((err) => { console.log(err); })
     }
 
     return (
@@ -62,7 +65,7 @@ const Signup = () => {
                     <select value={cc} name="signup_country_code" id="" onChange={(e) => { setCc(e.target.value) }}>
                         {
                             countryCodes.map((code) => {
-                                return <option value={code.country_phone_code}>{code.country_short_name} {code.country_phone_code}</option>
+                                return <option key={Math.round(Math.random() * 1E9)} value={code.country_phone_code}>{code.country_short_name} {code.country_phone_code}</option>
                             })
                         }
                     </select>
