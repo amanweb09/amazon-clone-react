@@ -18,12 +18,17 @@ const signinController = () => {
                         const emailToken = jwt.sign({ _id: user._id }, 'iwafiwhfiwhfifnhwiwifhifdjjdjdj', {
                             expiresIn: '2d'
                         })
-                        // console.log('user: ', user);
-                        // console.log('token: ', emailToken);
 
                         if (emailToken) {
                             user.emailToken = emailToken;
-                            return res.status(200).json({ success: 'user found', emailToken })
+                            await user.save((err, data) => {
+                                if (err) {
+                                    return res.status(500).json({ err: 'Internal Server Error' })
+                                }
+                                if (data) {
+                                    return res.status(200).json({ success: 'user found', emailToken })
+                                }
+                            })
                         }
                     }
                     else {
