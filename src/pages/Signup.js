@@ -51,7 +51,7 @@ const Signup = () => {
                     setIsSuccessful(true);
 
                     setTimeout(() => {
-                        navigate('/')
+                        navigate('/signin')
                     }, 1500)
                 }
             })

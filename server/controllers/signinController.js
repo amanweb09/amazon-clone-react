@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const Users = require('../models/User');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const signinController = () => {
     return {
-        async issueAccess(req, res) {
+        async issueEmailToken(req, res) {
             const email_tel = req.body.email_tel;
 
             if (!email_tel) {
@@ -16,7 +17,7 @@ const signinController = () => {
 
                     if (user) {
                         const emailToken = jwt.sign({ _id: user._id }, 'iwafiwhfiwhfifnhwiwifhifdjjdjdj', {
-                            expiresIn: '2d'
+                            expiresIn: '1d'
                         })
 
                         if (emailToken) {
@@ -39,6 +40,60 @@ const signinController = () => {
                         console.log(err);
                         return res.status(500).json({ err: 'Internal Server Error' })
                     }
+                }
+            }
+        },
+        async issueAccessToken(req, res) {
+            const { password, etCookie } = req.body;
+
+            if (!password || !etCookie) {
+                return res.status(422).json({ err: 'Please fill in your password' })
+            }
+            else {
+                const verifyToken = jwt.verify(etCookie, 'iwafiwhfiwhfifnhwiwifhifdjjdjdj');
+
+                if (verifyToken) {
+                    try {
+                        const user = await Users.findOne({ emailToken: etCookie });
+
+                        if (user) {
+                            try {
+                                const verPwd = await bcrypt.compare(req.body.password, user.password)
+                                if (verPwd === false) {
+                                    return res.status(401).json({ err: 'Invalid credentials' })
+
+                                }
+                                if (verPwd === true) {
+                                    const accessToken = jwt.sign({ _id: user._id }, 'wdhwhfeihfiefijfwojfwefnfeofgwiofk', {
+                                        expiresIn: '2d'
+                                    })
+
+                                    if (accessToken) {
+                                        user.accessToken.unshift(accessToken);
+                                        return res.status(200).json({ success: 'access granted', accessToken })
+                                    }
+                                    else {
+                                        return res.status(500).json({ err: 'Internal Server Error' })
+                                    }
+
+                                }
+                            } catch {
+                                er => {
+                                    console.log(er);
+                                    return res.status(500).json({ err: 'Internal Server Error' })
+                                }
+                            }
+
+                        }
+                    } catch {
+                        err => {
+                            console.log(err);
+                            return res.status(500).json({ err: 'Internal Server Error' })
+                        }
+                    }
+                }
+                else {
+                    return res.status(422).json({ err: 'Tampered URL. Please try again' })
                 }
             }
         }

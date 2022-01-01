@@ -4,16 +4,16 @@ import '../css/Signin.css'
 import axios from 'axios'
 import Cookies from 'universal-cookie'
 import ErrMessage from '../components/ErrMessage'
-import SuccessMessage from '../components/SuccessMessage'
 
 const Signin = () => {
 
     const [email_tel, setEmail_tel] = useState('');
+    const [password, setPassword] = useState('')
+
     const [isFail, setIsFail] = useState(false)
     const [respText, setRespText] = useState('')
+
     const [showPassowrdScreen, setShowPassowrdScreen] = useState(false)
-    const [password, setPassword] = useState('')
-    // const [showEmailScreen, setShowEmailScreen] = useState(true)
 
     const navigate = useNavigate();
 
@@ -30,7 +30,6 @@ const Signin = () => {
 
                 setIsFail(false)
                 setShowPassowrdScreen(true)
-                // setShowEmailScreen(false)
             })
             .catch((err) => {
                 switch (err.response.status) {
@@ -51,8 +50,28 @@ const Signin = () => {
     }
 
     const sendPassword = (e) => {
-        console.log('abc');
+        e.preventDefault();
+
+        const etCookie = cookies.get('et')
+
+        axios.post('/signin/password', { password, etCookie })
+            .then((res) => {
+                const { accessToken } = res.data;
+                setIsFail(false)
+
+                cookies.set('at', accessToken);
+                setTimeout(() => {
+                    navigate('/')
+                }, 1500)
+
+            })
+            .catch((err) => {
+                const errMessage = err.response.data.err;
+                setIsFail(true);
+                setRespText(errMessage)
+            })
     }
+
     return (
         <div className='signin'>
             <div className="signin_logo flex">
@@ -82,7 +101,7 @@ const Signin = () => {
                         :
                         <>
                             <label htmlFor="email_tel">Password</label>
-                            <input value={password} type="text" name='email_tel' onChange={(e) => { setPassword(e.target.value) }} />
+                            <input value={password} type="password" name='password' onChange={(e) => { setPassword(e.target.value) }} />
 
                             <button type='submit' onClick={(e) => { sendPassword(e) }}>Continue</button>
                         </>
