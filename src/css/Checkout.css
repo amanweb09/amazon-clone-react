@@ -20,3 +20,10 @@
 .checkout_right {
     flex: 2;
 }
+.cart_items_container {
+    background: #fff;
+    width: 100vw;
+}
+.checkout_item_wrapper {
+    border: 2px solid red;
+}

@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../css/Header.css';
 import { NavLink } from 'react-router-dom';
+import { CartContext } from '../context/CartContext'
 
 
 const Header = () => {
+
+    const { cart } = useContext(CartContext);
+
     return (
         <div className='header'>
             <NavLink to='/'>
@@ -50,7 +54,9 @@ const Header = () => {
                 <div className="flex-center header_option_basket">
                     <NavLink to="/checkout">
                         <i className="fas fa-shopping-bag"></i>
-                        <span className='header_option_line_two header_basket_count'>0</span>
+                        {
+                            <span className='header_option_line_two header_basket_count'>{cart.totalItems}</span>
+                        }
                     </NavLink>
                 </div>
             </div>
