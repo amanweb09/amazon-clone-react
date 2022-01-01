@@ -85,10 +85,14 @@ button {
 hr {
     margin: 1rem 0;
 }
+p.signup_form_links_p {
+    padding: 0.5rem 0;
+}
 .signup_links {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     float: left;
     margin: 0.25rem;
+    border: 1px solid #454545;
 }
 .signup_links a {
     color: rgb(47, 111, 185);

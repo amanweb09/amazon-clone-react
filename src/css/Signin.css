@@ -1,0 +1,115 @@
+.signin {
+    max-width: 100vw;
+    overflow: hidden;
+    min-height: 100vh;
+    background: #fff;
+}
+.signin_logo {
+    margin: 1rem auto;
+    width: 9rem;
+    height: 2rem;
+    cursor: pointer;
+}
+.signin_logo span{
+    padding-left: 0.2rem;
+    padding-top: 0.2rem;
+    font-size: 0.85rem;
+}
+.signin form {
+    width: 23%;
+    min-height: 40vh;
+    border: 1px solid #dcdcdc;
+    display: block;
+    margin: auto;
+    padding: 0.65rem 1.25rem;
+}
+span.signin_form_heading {
+    font-size: 1.7rem;
+    display: block;
+    color: #111;
+    margin: 0.75rem 0;
+    margin-bottom: 1.15rem;
+}
+.signin form label {
+    display: block;
+    font-weight: 800;
+    font-size: 0.80rem;
+    color: #454545;
+    padding: 0.5rem 0;
+}
+.signin form > input {
+    width: 95%;
+    height: 1.60rem;
+    margin-bottom: 0.65rem;
+}
+.signin form > input:focus {
+    border: 2px solid #f0c14b;
+}
+small.signup_form_links {
+    padding: 1rem 0;
+}
+form a {
+    color: rgb(47, 111, 185);
+    font-weight: 400;
+    margin: 0 0.1rem;
+}
+div.new_acc {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem 0;
+}
+div.new_acc p{
+    text-align: center;
+    font-size: 0.75rem;
+    color: #9b9b9b;
+    position: relative;
+    width: max-content;
+    display: block;
+    margin: auto;
+}
+div.new_acc p::before, div.new_acc p::after {
+    content: '';
+    position: absolute;
+    width: 5rem;
+    height: 1px;
+    background: #c5c5c5;
+    top: 50%;
+    transform: translateY(-50%);
+}
+div.new_acc p::before {
+    left: -5.1rem;
+}
+div.new_acc p::after {
+    right: -5.1rem;
+}
+button.create_acc_btn {
+    width: 23%;
+    height: 2.25rem;
+    background: linear-gradient(to bottom, #fff, #dcdcdc);
+    outline: none;
+    border: 1px solid #808080;
+}
+hr {
+    width: 46%;
+    color: #ececec;
+    margin: auto;
+    display: block;
+}
+div.footer_links {
+    width: 25%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: 1rem 0;
+}
+div.footer_links a {
+    color: rgb(47, 111, 185);
+    margin: 0 1rem;
+    font-size: 0.8rem;
+    text-align: center;
+}
+p.footer-copy {
+    color: #808080;
+    font-size: 0.8rem;
+    text-align: center;
+}

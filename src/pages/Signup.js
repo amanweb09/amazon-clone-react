@@ -126,7 +126,7 @@ const Signup = () => {
                 <hr />
 
                 <div className='flex-center signup_links'>
-                    <p>Already have an account? <NavLink to='/'>Sign in</NavLink> </p>
+                    <p>Already have an account? <NavLink to='/signin'>Sign in</NavLink> </p>
                 </div>
 
                 <div className='flex-center signup_links'>
