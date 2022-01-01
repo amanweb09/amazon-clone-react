@@ -16,7 +16,7 @@ const signinController = () => {
                     const user = await Users.findOne({ $or: [{ email: email_tel }, { tel: email_tel }] });
 
                     if (user) {
-                        const emailToken = jwt.sign({ _id: user._id }, 'iwafiwhfiwhfifnhwiwifhifdjjdjdj', {
+                        const emailToken = jwt.sign({ _id: user._id }, process.env.EMAIL_TOKEN_SECRET, {
                             expiresIn: '1d'
                         })
 
@@ -50,7 +50,7 @@ const signinController = () => {
                 return res.status(422).json({ err: 'Please fill in your password' })
             }
             else {
-                const verifyToken = jwt.verify(etCookie, 'iwafiwhfiwhfifnhwiwifhifdjjdjdj');
+                const verifyToken = jwt.verify(etCookie, process.env.EMAIL_TOKEN_SECRET);
 
                 if (verifyToken) {
                     try {
@@ -64,7 +64,7 @@ const signinController = () => {
 
                                 }
                                 if (verPwd === true) {
-                                    const accessToken = jwt.sign({ _id: user._id }, 'wdhwhfeihfiefijfwojfwefnfeofgwiofk', {
+                                    const accessToken = jwt.sign({ _id: user._id }, PROCESS.ENV.ACCESS_TOKEN_SECRET, {
                                         expiresIn: '2d'
                                     })
 

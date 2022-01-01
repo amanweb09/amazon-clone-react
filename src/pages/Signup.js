@@ -25,7 +25,7 @@ const Signup = () => {
 
         axios.get("https://www.universal-tutorial.com/api/countries/", {
             headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhbWFua2hhbm5hMjI0NDY2QGdtYWlsLmNvbSIsImFwaV90b2tlbiI6IlcwczZwX0dzYmRjNF9yUGhwamdoRVp1TGNKX0kyZW1RVk53a3RBcmdwTDJ0QXA5VEVPMXZqZVZqbi0yNzduSVprTWsifSwiZXhwIjoxNjQwOTU5ODk1fQ.D6jhzR7chgHgTbQVvZ1r4445ERtNNoGxgdXjCBdGwwk",
+                "Authorization": process.env.COUNTRY_CODES_API_KEY,
                 "Accept": "application/json"
             }
         })

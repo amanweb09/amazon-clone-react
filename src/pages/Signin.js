@@ -124,7 +124,7 @@ const Signin = () => {
 
             <div className="new_acc">
                 <p>New to Amazon?</p>
-                <button className="create_acc_btn">Create your Amazon account</button>
+                <button className="create_acc_btn" onClick={() => { navigate('/signup') }}>Create your Amazon account</button>
             </div>
 
             <hr />

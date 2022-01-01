@@ -18,7 +18,7 @@ const Header = () => {
             </div>
 
             <div className="header_nav flex">
-                <NavLink to='/signup'>
+                <NavLink to='/signin'>
                     <div className="header_option">
                         <span className="header_option_line_one">
                             Hello Guest

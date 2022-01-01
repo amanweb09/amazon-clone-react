@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const dbConnection = async() => {
-    const dbURL = 'mongodb://localhost:27017/amazon-clone'
+    const dbURL = process.env.DBCONNURL;
     try {
         const conn = await mongoose.connect(dbURL);
 
