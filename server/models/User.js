@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    emailToken: {
+        type: String,
+        default: ''
+    },
     accessToken: {
         type: Array
     }

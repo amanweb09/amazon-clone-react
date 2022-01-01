@@ -2,12 +2,22 @@ import React, { useState } from 'react'
 import { useNavigate, NavLink } from 'react-router-dom';
 import '../css/Signin.css'
 import axios from 'axios'
+import Cookies from 'universal-cookie'
+import ErrMessage from '../components/ErrMessage'
+import SuccessMessage from '../components/SuccessMessage'
 
 const Signin = () => {
 
     const [email_tel, setEmail_tel] = useState('');
+    const [isFail, setIsFail] = useState(false)
+    const [respText, setRespText] = useState('')
+    const [showPassowrdScreen, setShowPassowrdScreen] = useState(false)
+    const [password, setPassword] = useState('')
+    // const [showEmailScreen, setShowEmailScreen] = useState(true)
+
     const navigate = useNavigate();
 
+    const cookies = new Cookies();
 
     const sendSigninData = (e) => {
         e.preventDefault();
@@ -15,10 +25,33 @@ const Signin = () => {
         axios.post('/signin', { email_tel })
             .then((res) => {
                 console.log(res);
+                const emailToken = res.data.emailToken;
+                cookies.set('et', emailToken);
+
+                setIsFail(false)
+                setShowPassowrdScreen(true)
+                // setShowEmailScreen(false)
             })
             .catch((err) => {
-                console.log(err.response.data);
+                switch (err.response.status) {
+                    case 422:
+                        setRespText('Please fill all the fields.')
+                        break;
+                    case 500:
+                        setRespText('Internal Server Error')
+                        break;
+                    case 404:
+                        setRespText('No user exists with this email/telephone number')
+                    default:
+                        break;
+                }
+
+                setIsFail(true)
             })
+    }
+
+    const sendPassword = (e) => {
+        console.log('abc');
     }
     return (
         <div className='signin'>
@@ -31,13 +64,29 @@ const Signin = () => {
                 <span>.in</span>
             </div>
 
+            {
+                isFail ? <ErrMessage message={respText} /> : ''
+            }
+
+
             <form action="#" method='POST'>
                 <span className='signin_form_heading'>Sign-in</span>
+                {
+                    !showPassowrdScreen ?
+                        <>
+                            <label htmlFor="email_tel">Email or mobile phone number</label>
+                            <input value={email_tel} type="text" name='email_tel' onChange={(e) => { setEmail_tel(e.target.value) }} />
 
-                <label htmlFor="email_tel">Email or mobile phone number</label>
-                <input value={email_tel} type="text" name='email_tel' onChange={(e) => { setEmail_tel(e.target.value) }} />
+                            <button type='submit' onClick={(e) => { sendSigninData(e) }}>Continue</button>
+                        </>
+                        :
+                        <>
+                            <label htmlFor="email_tel">Password</label>
+                            <input value={password} type="text" name='email_tel' onChange={(e) => { setPassword(e.target.value) }} />
 
-                <button type='submit' onClick={(e) => { sendSigninData(e) }}>Continue</button>
+                            <button type='submit' onClick={(e) => { sendPassword(e) }}>Continue</button>
+                        </>
+                }
 
                 <p className='signup_form_links_p'>
                     <small className='signup_form_links'>By continuing, you agree to Amazon's &nbsp;
